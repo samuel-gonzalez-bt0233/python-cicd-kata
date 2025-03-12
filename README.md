@@ -13,10 +13,8 @@ This repository contains a very simple web service that simulates rolling a die 
 - [Python CI/CD Kata](#python-cicd-kata)
   - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
-  - [Local Development Setup](#local-development-setup)
-    - [Dependencies](#dependencies)
-    - [Pre-commit hooks](#pre-commit-hooks)
-    - [Local development server](#local-development-server)
+  - [Dependencies](#dependencies)
+  - [Local development server](#local-development-server)
   - [Code quality](#code-quality)
     - [Linter](#linter)
     - [Formatter](#formatter)
@@ -25,7 +23,8 @@ This repository contains a very simple web service that simulates rolling a die 
   - [Deployment](#deployment)
     - [Docker and Docker Hub](#docker-and-docker-hub)
     - [Deploying the Docker Image to Render](#deploying-the-docker-image-to-render)
-  - [Running GitHub Actions Locally with Act](#running-github-actions-locally-with-act)
+  - [Pre-commit hooks](#pre-commit-hooks)
+  - [Github Actions Extra: Running GitHub Actions Locally with Act](#github-actions-extra-running-github-actions-locally-with-act)
   - [Deliverable Instructions](#deliverable-instructions)
     - [Submission](#submission)
     - [Notes](#notes)
@@ -41,9 +40,7 @@ This repository contains a very simple web service that simulates rolling a die 
 - Create a Render account (you can sign up using GitHub): [Render](https://render.com/)
 - **(Recommended)** Install [VS Code](https://code.visualstudio.com/). On the workshop day, open the practice in VS Code and install the recommended extensions when prompted (watch for the popup in the bottom right corner). While optional, this will enable useful integrations that enhance the experience.
 
-## Local Development Setup
-
-### Dependencies
+## Dependencies
 
 1. Create and activate a virtual environment:
 
@@ -66,28 +63,7 @@ uv remove (--group dev) <package_name>
      ![Step 1](docs/venv-selection-step-1.png)
      ![Step 2](docs/venv-selection-step-2.png)
 
-### Pre-commit hooks
-
-1. Install pre-commit as a dev dependency:
-
-```sh
-uv add --group dev pre-commit
-```
-
-2. Install hooks:
-
-```sh
-pre-commit install
-```
-
-3. Test pre-commit hooks while configuring them:
-
-```sh
-pre-commit install
-pre-commit run
-```
-
-### Local development server
+## Local development server
 
 Run the application:
 
@@ -149,7 +125,7 @@ pytest
 
    ```sh
    docker build -t <username>/<service-name>:latest .
-   docker images ls
+   docker images
    ```
 
 2. **Run the Docker container:**
@@ -201,7 +177,28 @@ pytest
      - `/` → `%2F`
        This ensures they are correctly transmitted in the request. [Learn more about URL encoding](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding).
 
-## Running GitHub Actions Locally with Act
+## Pre-commit hooks
+
+1. Install pre-commit as a dev dependency:
+
+```sh
+uv add --group dev pre-commit
+```
+
+2. Install hooks:
+
+```sh
+pre-commit install
+```
+
+3. Test pre-commit hooks while configuring them:
+
+```sh
+pre-commit install
+pre-commit run
+```
+
+## Github Actions Extra: Running GitHub Actions Locally with Act
 
 1. Install `act`:
 
