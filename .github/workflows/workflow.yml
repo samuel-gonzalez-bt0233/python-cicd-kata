@@ -13,3 +13,21 @@ jobs:
         with:
           pyrhon-version-file: "proyect.toml"  
       - run: uv run ruff format .    
+
+build:
+    environment: produccion
+    needs: code-quality
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v3
+      - run:  docker build -t samuelgonzalezbt0233/python-cicd-kata:latest
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - run: docker push samuelgonzalezbt0233/travel-agency-kata:latest    
+              
