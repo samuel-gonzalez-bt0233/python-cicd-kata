@@ -14,7 +14,7 @@ jobs:
           pyrhon-version-file: "proyect.toml"  
       - run: uv run ruff format .    
 
-    build:
+  build:
       environment: produccion
       needs: code-quality
       runs-on: ubuntu-latest
